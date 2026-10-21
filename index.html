@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Playstack: new games</title>
+<title>Playstack: rankings</title>
 <!--
-  The Playstack Home banner (web variant). The app shows it 132 dp tall at full width, with no scrolling;
-  a tap opens the config's "link" in the browser. Self-contained: no fonts, images or scripts to fetch.
+  The Playstack Rankings tab banner (rankings_banner, web variant). Shown 132 dp tall at full width, no scrolling;
+  a tap opens the config's "link". Self-contained: no fonts, images or scripts to fetch.
 -->
 <style>
   :root {
     --text: #F3F6FF;
     --dim: #9AA8CC;
     --cyan: #26D7E6;
-    --green: #27A84F;
-    --pink: #D63F86;
-    --amber: #F2B21B;
-    --blue: #2F6FE0;
+    --orange: #FFBE2E;
+    --yellow: #FFD84D;
+    --silver: #C9D3EA;
+    --bronze: #E0915A;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; height: 100%; }
@@ -32,72 +32,33 @@
     -webkit-user-select: none;
     user-select: none;
   }
-  .wrap {
-    width: 100%;
-    max-width: 520px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 16px 0 20px;
-  }
+  .wrap { width: 100%; max-width: 520px; display: flex; align-items: center; gap: 12px; padding: 0 16px 0 20px; }
   .copy { flex: 1; min-width: 0; }
   .pill {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: var(--cyan);
-    color: #0A1630;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    background: var(--orange); color: #0A1630;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
   }
   h1 { margin: 6px 0 4px; font-size: 22px; line-height: 1.1; font-weight: 800; }
   h1 em { font-style: normal; color: var(--cyan); }
   p { margin: 0; font-size: 12.5px; line-height: 1.35; color: var(--dim); }
   p span { display: block; white-space: nowrap; }
 
-  /* Four tiles in a 2×2 grid, one per new game, each with a tiny looping scene. */
-  .tiles { display: grid; grid-template-columns: repeat(2, 50px); gap: 8px; flex: none; }
-  .tile {
-    width: 50px; height: 50px;
-    border-radius: 13px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 12px 14px -10px rgba(255, 255, 255, 0.25);
-    animation: float 3.2s ease-in-out infinite;
+  /* A podium whose steps rise in turn, with a trophy bouncing on top. */
+  .art { width: 120px; height: 100px; flex: none; }
+  .art svg { width: 100%; height: 100%; overflow: visible; }
+  .step { transform-box: fill-box; transform-origin: bottom; animation: rise 3.6s ease-out infinite; }
+  .step.s2 { animation-delay: 0.25s; }
+  .step.s3 { animation-delay: 0.5s; }
+  @keyframes rise {
+    0% { transform: scaleY(0.2); }
+    25%, 100% { transform: scaleY(1); }
   }
-  .tile svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .slope { background: var(--green); }
-  .melon { background: var(--pink); animation-delay: -0.8s; }
-  .tower { background: var(--amber); animation-delay: -1.6s; }
-  .hoop { background: var(--blue); animation-delay: -2.4s; }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-
-  /* Slope: the ball steers left and right down the track. */
-  .ball-steer { animation: steer 2.4s ease-in-out infinite; }
-  @keyframes steer { 0%, 100% { transform: translateX(-6px); } 50% { transform: translateX(6px); } }
-  .lines { animation: run 0.6s linear infinite; }
-  @keyframes run { from { transform: translateY(0); } to { transform: translateY(8px); } }
-
-  /* Watermelon: a fruit drops and lands on the pile. */
-  .drop { animation: drop 1.8s cubic-bezier(.5, 0, .9, .6) infinite; }
-  @keyframes drop {
-    0% { transform: translateY(-22px); opacity: 0; }
-    15% { opacity: 1; }
-    55%, 100% { transform: translateY(0); opacity: 1; }
-  }
-
-  /* Tower: the top block slides across, then settles. */
-  .slide { animation: slide 2s ease-in-out infinite; }
-  @keyframes slide { 0%, 100% { transform: translateX(-9px); } 50% { transform: translateX(9px); } }
-
-  /* Hoop Flap: the ball flaps up and falls through the hoop. */
-  .flap { animation: flap 1.4s ease-in-out infinite; }
-  @keyframes flap {
-    0%, 100% { transform: translate(-7px, 4px); }
-    30% { transform: translate(-2px, -8px); }
-    70% { transform: translate(5px, 2px); }
-  }
+  .trophy { animation: hop 1.8s ease-in-out infinite; }
+  @keyframes hop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  .spark { animation: twinkle 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .spark.b { animation-delay: -0.9s; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.2; transform: scale(0.6); } 50% { opacity: 1; transform: scale(1); } }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; }
@@ -107,44 +68,29 @@
 <body>
   <div class="wrap">
     <div class="copy">
-      <span class="pill">NEW</span>
-      <h1>4 new <em>games</em></h1>
-      <p><span>Slope · Watermelon</span> <span>Tower · Hoop Flap</span></p>
+      <span class="pill">COMING SOON</span>
+      <h1>Climb the <em>ranks</em></h1>
+      <p><span>Offline and online</span> <span>leaderboards</span></p>
     </div>
-    <div class="tiles" aria-hidden="true">
-      <div class="tile slope">
-        <svg viewBox="0 0 50 50">
-          <path d="M19 8 H31 L42 46 H8 Z" fill="rgba(255,255,255,0.18)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
-          <g class="lines" stroke="rgba(255,255,255,0.45)" stroke-width="1">
-            <line x1="12" y1="18" x2="38" y2="18"/><line x1="11" y1="26" x2="39" y2="26"/>
-            <line x1="10" y1="34" x2="40" y2="34"/><line x1="9" y1="42" x2="41" y2="42"/>
-          </g>
-          <g class="ball-steer"><circle cx="25" cy="34" r="6" fill="#C9FFD9"/><circle cx="23" cy="32" r="2" fill="#fff"/></g>
-        </svg>
-      </div>
-      <div class="tile melon">
-        <svg viewBox="0 0 50 50">
-          <circle cx="16" cy="40" r="8" fill="#F5A425"/>
-          <circle cx="32" cy="38" r="10" fill="#2FA84F"/>
-          <path d="M26 31 v14 M32 28 v20 M38 31 v14" stroke="#1C7A35" stroke-width="1.6"/>
-          <g class="drop"><circle cx="20" cy="22" r="5.5" fill="#E8463C"/><path d="M20 16.5 l2 -4" stroke="#2FA84F" stroke-width="1.6" stroke-linecap="round"/></g>
-        </svg>
-      </div>
-      <div class="tile tower">
-        <svg viewBox="0 0 50 50">
-          <rect x="13" y="38" width="24" height="7" rx="1.5" fill="#fff"/>
-          <rect x="13" y="30" width="24" height="7" rx="1.5" fill="#FFF3C4"/>
-          <rect x="13" y="22" width="24" height="7" rx="1.5" fill="#fff"/>
-          <rect class="slide" x="13" y="13" width="24" height="7" rx="1.5" fill="#FFE07A"/>
-        </svg>
-      </div>
-      <div class="tile hoop">
-        <svg viewBox="0 0 50 50">
-          <ellipse cx="34" cy="24" rx="9" ry="3" fill="none" stroke="#FF8A3D" stroke-width="2.4"/>
-          <path d="M26 25 l3 11 h10 l3 -11" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
-          <g class="flap"><circle cx="17" cy="24" r="6" fill="#F5A425"/><path d="M11.5 24 h11 M17 18.5 v11" stroke="#B5651D" stroke-width="1"/></g>
-        </svg>
-      </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 120 100">
+        <!-- Podium: 2nd, 1st, 3rd. -->
+        <rect class="step s2" x="10" y="62" width="32" height="34" rx="4" fill="var(--silver)"/>
+        <rect class="step" x="44" y="50" width="32" height="46" rx="4" fill="var(--yellow)"/>
+        <rect class="step s3" x="78" y="70" width="32" height="26" rx="4" fill="var(--bronze)"/>
+        <text x="26" y="84" text-anchor="middle" font-size="14" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">2</text>
+        <text x="60" y="78" text-anchor="middle" font-size="16" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">1</text>
+        <text x="94" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">3</text>
+        <!-- The trophy on the top step. -->
+        <g class="trophy">
+          <path d="M50 18 h20 v8 a10 10 0 0 1 -20 0 z" fill="var(--orange)"/>
+          <path d="M50 20 h-5 a5 6 0 0 0 5 9 M70 20 h5 a5 6 0 0 1 -5 9" fill="none" stroke="var(--orange)" stroke-width="2.2"/>
+          <rect x="58" y="35" width="4" height="6" fill="var(--orange)"/>
+          <rect x="53" y="41" width="14" height="5" rx="1.5" fill="var(--orange)"/>
+        </g>
+        <path class="spark" d="M36 22 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 z" fill="#fff"/>
+        <path class="spark b" d="M86 30 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5 z" fill="#fff"/>
+      </svg>
     </div>
   </div>
 </body>
