@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playstack: rankings</title>
+<!--
+  The Playstack Rankings tab banner (rankings_banner, web variant). Shown 132 dp tall at full width, no scrolling;
+  a tap opens the config's "link". Self-contained: no fonts, images or scripts to fetch.
+-->
+<style>
+  :root {
+    --text: #F3F6FF;
+    --dim: #9AA8CC;
+    --cyan: #26D7E6;
+    --orange: #FFBE2E;
+    --yellow: #FFD84D;
+    --silver: #C9D3EA;
+    --bronze: #E0915A;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #14305E, #103E6E, #0E5470);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .wrap { width: 100%; max-width: 520px; display: flex; align-items: center; gap: 12px; padding: 0 16px 0 20px; }
+  .copy { flex: 1; min-width: 0; }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    background: var(--orange); color: #0A1630;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+  }
+  h1 { margin: 6px 0 4px; font-size: 22px; line-height: 1.1; font-weight: 800; }
+  h1 em { font-style: normal; color: var(--cyan); }
+  p { margin: 0; font-size: 12.5px; line-height: 1.35; color: var(--dim); }
+  p span { display: block; white-space: nowrap; }
+
+  /* A podium whose steps rise in turn, with a trophy bouncing on top. */
+  .art { width: 120px; height: 100px; flex: none; }
+  .art svg { width: 100%; height: 100%; overflow: visible; }
+  .step { transform-box: fill-box; transform-origin: bottom; animation: rise 3.6s ease-out infinite; }
+  .step.s2 { animation-delay: 0.25s; }
+  .step.s3 { animation-delay: 0.5s; }
+  @keyframes rise {
+    0% { transform: scaleY(0.2); }
+    25%, 100% { transform: scaleY(1); }
+  }
+  .trophy { animation: hop 1.8s ease-in-out infinite; }
+  @keyframes hop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  .spark { animation: twinkle 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .spark.b { animation-delay: -0.9s; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.2; transform: scale(0.6); } 50% { opacity: 1; transform: scale(1); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="copy">
+      <span class="pill">COMING SOON</span>
+      <h1>Climb the <em>ranks</em></h1>
+      <p><span>Offline and online</span> <span>leaderboards</span></p>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 120 100">
+        <!-- Podium: 2nd, 1st, 3rd. -->
+        <rect class="step s2" x="10" y="62" width="32" height="34" rx="4" fill="var(--silver)"/>
+        <rect class="step" x="44" y="50" width="32" height="46" rx="4" fill="var(--yellow)"/>
+        <rect class="step s3" x="78" y="70" width="32" height="26" rx="4" fill="var(--bronze)"/>
+        <text x="26" y="84" text-anchor="middle" font-size="14" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">2</text>
+        <text x="60" y="78" text-anchor="middle" font-size="16" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">1</text>
+        <text x="94" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">3</text>
+        <!-- The trophy on the top step. -->
+        <g class="trophy">
+          <path d="M50 18 h20 v8 a10 10 0 0 1 -20 0 z" fill="var(--orange)"/>
+          <path d="M50 20 h-5 a5 6 0 0 0 5 9 M70 20 h5 a5 6 0 0 1 -5 9" fill="none" stroke="var(--orange)" stroke-width="2.2"/>
+          <rect x="58" y="35" width="4" height="6" fill="var(--orange)"/>
+          <rect x="53" y="41" width="14" height="5" rx="1.5" fill="var(--orange)"/>
+        </g>
+        <path class="spark" d="M36 22 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 z" fill="#fff"/>
+        <path class="spark b" d="M86 30 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5 z" fill="#fff"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
