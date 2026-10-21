@@ -2,19 +2,19 @@
   "banner": {
       "version": 1,
       "variant": "web",
-      "url": "https://valerigyordanov.github.io/PlaystackWeb/banner/",
+      "url": "https://valerigyordanov.github.io/PlaystackWeb/pages/banner/",
       "link": "https://insync.bg"
   },
   "online_banner": {
       "version": 1,
       "variant": "web",
-      "url": "https://valerigyordanov.github.io/PlaystackWeb/online_banner/",
+      "url": "https://valerigyordanov.github.io/PlaystackWeb/pages/online_banner/",
       "link": "https://insync.bg"
   },
   "rankings_banner": {
       "version": 1,
       "variant": "web",
-      "url": "https://valerigyordanov.github.io/PlaystackWeb/rankings_banner/",
+      "url": "https://valerigyordanov.github.io/PlaystackWeb/pages/rankings_banner/",
       "link": "https://insync.bg"
   }
 }
