@@ -38,12 +38,23 @@
 <body>
 <main>
   <h1>Playstack privacy policy</h1>
-  <p class="meta">App: Playstack (Android, package <code>com.vlr.playstack</code>) · Publisher: Valeri Yordanov · Effective 21 October 2026</p>
+  <p class="meta">App: Playstack (Android, package <code>com.vlr.playstack</code>) · Publisher: Valeri Yordanov · Effective 28 October 2026</p>
 
   <p>Playstack is a collection of games you can play offline. This page explains what data the app handles, why, and the choices you have. You don't need an account to use Playstack.</p>
 
   <h2>Data that stays on your device</h2>
   <p>Your game progress, scores, settings, recently played games and hint counts are stored only on your device. We don't collect them. Uninstalling the app or clearing its data removes them.</p>
+
+  <h2>Surveys</h2>
+  <p>The Community tab can show short, optional surveys (for example, which game to add next). Taking part is up to you.</p>
+  <ul>
+    <li><strong>What is collected:</strong> your answers, when you sent them, the app version and the app's language.</li>
+    <li><strong>Anonymous ID:</strong> when you open the surveys, the app signs in to Firebase Authentication anonymously. This creates a random ID that lets you answer each survey once and change your answer later. It isn't linked to your name, email, Google account or advertising ID, and you never type anything to get it.</li>
+    <li><strong>When data is sent:</strong> loading the surveys uses the anonymous ID; your answers are sent only when you tap Send (or, if you are offline, as soon as you are back online).</li>
+    <li><strong>Where it is stored:</strong> in Google Cloud Firestore, in the European Union. Only the publisher can read the answers, in the Firebase console; other users can't see them.</li>
+    <li><strong>What it is used for:</strong> only to learn, in aggregate, what players want from Playstack. Answers are not used for advertising and not sold or shared.</li>
+    <li><strong>How long it is kept:</strong> until the survey's results are no longer needed. Because answers aren't linked to your identity, we usually can't tell which ones are yours; clearing the app's data or reinstalling it gives you a new anonymous ID.</li>
+  </ul>
 
   <h2>Data handled by services we use</h2>
   <p>Some features use services from Google and GitHub. They receive data directly from your device, under their own privacy policies:</p>
@@ -72,8 +83,18 @@
       </tr>
       <tr>
         <td>Firebase Remote Config</td>
-        <td>Adjusting app settings (for example, ad settings) without an update.</td>
+        <td>Adjusting app settings without an update (for example, ad settings, the Top Picks on Home and which tabs are shown).</td>
         <td>An app-instance ID.</td>
+      </tr>
+      <tr>
+        <td>Firebase Authentication</td>
+        <td>An anonymous sign-in for the surveys, so each person answers a survey once.</td>
+        <td>A random anonymous user ID, IP address and device information, as in any request.</td>
+      </tr>
+      <tr>
+        <td>Google Cloud Firestore</td>
+        <td>Storing the surveys and your answers to them.</td>
+        <td>Your survey answers, the time they were sent, the app version and language, and the anonymous user ID. Stored in the EU.</td>
       </tr>
       <tr>
         <td>Google Play Billing</td>
@@ -94,6 +115,7 @@
     <li><strong>Consent:</strong> where the law requires it, the app asks before ads or analytics use your data. You can change your answer at any time in <em>Settings → Privacy choices</em>.</li>
     <li><strong>Advertising ID:</strong> you can reset it or opt out of personalised ads in your Android settings (Google → Ads, or Privacy → Ads).</li>
     <li><strong>No ads:</strong> Premium, a one-time purchase, removes all ads.</li>
+    <li><strong>Surveys:</strong> they are optional. If you never open them, no anonymous ID is created and no answers are sent.</li>
     <li><strong>Offline:</strong> every game works without an internet connection; without one, no data is sent.</li>
   </ul>
 
@@ -107,7 +129,7 @@
   <p>Depending on where you live (for example, under the GDPR), you can ask to access, correct or delete your personal data, object to its use, or withdraw consent. Because we don't keep your data on our own servers, most requests are best handled through the services above, but you can always contact us and we'll help. You can also complain to your data protection authority (in Bulgaria, the <a href="https://www.cpdp.bg/en/">Commission for Personal Data Protection</a>).</p>
 
   <h2>Future features</h2>
-  <p>Online play and rankings are planned. Registering for them will be optional. If they collect new data, this policy will be updated before they launch.</p>
+  <p>Online play, rankings and community news are planned. Registering for them will be optional. If they collect new data, this policy will be updated before they launch.</p>
 
   <h2>Changes</h2>
   <p>We'll post any changes to this policy on this page and update the date above.</p>
