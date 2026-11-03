@@ -10,9 +10,10 @@
 -->
 <style>
   :root {
-    --text: #F3F6FF;
-    --dim: #9AA8CC;
-    --cyan: #26D7E6;
+    /* The app's palette (core/design/Palette.kt): --cyan is its main accent, green. */
+    --text: #F2F2F2;
+    --dim: #AEAEB4;
+    --cyan: #2ECC71;
     --green: #27A84F;
     --pink: #D63F86;
     --amber: #F2B21B;
@@ -25,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #14305E, #103E6E, #0E5470);
+    background: #121214;
     color: var(--text);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     overflow: hidden;
@@ -46,7 +47,7 @@
     padding: 2px 8px;
     border-radius: 999px;
     background: var(--cyan);
-    color: #0A1630;
+    color: #000000;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -102,7 +103,15 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; }
   }
+  /* ?theme=light (sent by the app in its light theme): the palette's light set. Without it the page stays dark. */
+  html.light { --text: #17171B; --dim: #55555F; --cyan: #1FA65A; }
+  html.light body { background: #FFFFFF; }
+  html.light .pill { color: #FFFFFF; }
 </style>
+<script>
+  // The app adds ?theme=light in its light theme; older versions send nothing, so dark stays the default.
+  if (new URLSearchParams(location.search).get('theme') === 'light') document.documentElement.classList.add('light');
+</script>
 </head>
 <body>
   <div class="wrap">
