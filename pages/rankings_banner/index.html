@@ -10,12 +10,13 @@
 -->
 <style>
   :root {
-    --text: #F3F6FF;
-    --dim: #9AA8CC;
-    --cyan: #26D7E6;
-    --orange: #FFBE2E;
+    /* The app's palette (core/design/Palette.kt): --cyan is its main accent, green. */
+    --text: #F2F2F2;
+    --dim: #AEAEB4;
+    --cyan: #2ECC71;
+    --orange: #FF9F1C;
     --yellow: #FFD84D;
-    --silver: #C9D3EA;
+    --silver: #C7C7CF;
     --bronze: #E0915A;
   }
   * { box-sizing: border-box; }
@@ -25,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #14305E, #103E6E, #0E5470);
+    background: #121214;
     color: var(--text);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     overflow: hidden;
@@ -36,7 +37,7 @@
   .copy { flex: 1; min-width: 0; }
   .pill {
     display: inline-block; padding: 2px 8px; border-radius: 999px;
-    background: var(--orange); color: #0A1630;
+    background: var(--orange); color: #000000;
     font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
   }
   h1 { margin: 6px 0 4px; font-size: 22px; line-height: 1.1; font-weight: 800; }
@@ -63,7 +64,16 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; }
   }
+  /* ?theme=light (sent by the app in its light theme): the palette's light set. Without it the page stays dark. */
+  html.light { --text: #17171B; --dim: #55555F; --cyan: #1FA65A; --orange: #E88A00; --yellow: #E6B800; --silver: #B8B8C0; }
+  html.light body { background: #FFFFFF; }
+  html.light .pill { color: #FFFFFF; }
+  html.light .spark { fill: #E6B800; }
 </style>
+<script>
+  // The app adds ?theme=light in its light theme; older versions send nothing, so dark stays the default.
+  if (new URLSearchParams(location.search).get('theme') === 'light') document.documentElement.classList.add('light');
+</script>
 </head>
 <body>
   <div class="wrap">
@@ -78,9 +88,9 @@
         <rect class="step s2" x="10" y="62" width="32" height="34" rx="4" fill="var(--silver)"/>
         <rect class="step" x="44" y="50" width="32" height="46" rx="4" fill="var(--yellow)"/>
         <rect class="step s3" x="78" y="70" width="32" height="26" rx="4" fill="var(--bronze)"/>
-        <text x="26" y="84" text-anchor="middle" font-size="14" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">2</text>
-        <text x="60" y="78" text-anchor="middle" font-size="16" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">1</text>
-        <text x="94" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="#0A1630" font-family="system-ui, sans-serif">3</text>
+        <text x="26" y="84" text-anchor="middle" font-size="14" font-weight="800" fill="#17171B" font-family="system-ui, sans-serif">2</text>
+        <text x="60" y="78" text-anchor="middle" font-size="16" font-weight="800" fill="#17171B" font-family="system-ui, sans-serif">1</text>
+        <text x="94" y="88" text-anchor="middle" font-size="13" font-weight="800" fill="#17171B" font-family="system-ui, sans-serif">3</text>
         <!-- The trophy on the top step. -->
         <g class="trophy">
           <path d="M50 18 h20 v8 a10 10 0 0 1 -20 0 z" fill="var(--orange)"/>
