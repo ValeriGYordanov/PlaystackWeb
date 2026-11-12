@@ -38,22 +38,37 @@
 <body>
 <main>
   <h1>Playstack privacy policy</h1>
-  <p class="meta">App: Playstack (Android, package <code>com.vlr.playstack</code>) · Publisher: Valeri Yordanov · Effective 2 November 2026</p>
+  <p class="meta">App: Playstack (Android, package <code>com.vlr.playstack</code>) · Publisher: Valeri Yordanov · Effective 12 November 2026 · See also the <a href="../terms/">terms of use</a></p>
 
   <p>Playstack is a collection of games you can play offline. This page explains what data the app handles, why, and the choices you have. You don't need an account to use Playstack.</p>
 
   <h2>Data that stays on your device</h2>
-  <p>Your game progress, scores, settings, recently played games and hint counts are stored only on your device. We don't collect them. Uninstalling the app or clearing its data removes them.</p>
-
-  <h2>Surveys</h2>
-  <p>The Community tab can show short, optional surveys (for example, which game to add next). Taking part is up to you.</p>
+  <p>These are stored only on your device. We don't collect them, and uninstalling the app or clearing its data removes them:</p>
   <ul>
-    <li><strong>What is collected:</strong> your answers, when you sent them, the app version and the app's language.</li>
-    <li><strong>Anonymous ID:</strong> when you open the surveys, the app signs in to Firebase Authentication anonymously. This creates a random ID that lets you answer each survey once and change your answer later. It isn't linked to your name, email, Google account or advertising ID, and you never type anything to get it.</li>
-    <li><strong>When data is sent:</strong> loading the surveys uses the anonymous ID; your answers are sent only when you tap Send (or, if you are offline, as soon as you are back online).</li>
+    <li>your game progress, scores, settings, recently played games, and hint, undo and booster counts;</li>
+    <li>your achievements, Medals, the items you bought with Medals in the Shop and the days you played in a row;</li>
+    <li>which news items you have already seen.</li>
+  </ul>
+  <p>If your phone's Android backup is on, Android may back some of this up to your Google account and bring it back after a reinstall; Google handles that backup, and it may not include everything.</p>
+
+  <h2>Community: news and surveys</h2>
+  <p>The Community tab shows news about Playstack and short, optional surveys (for example, which game to add next).</p>
+  <ul>
+    <li><strong>Anonymous ID:</strong> when the app starts with an internet connection, it signs in to Firebase Authentication anonymously to load the news (and, if you open them, the surveys). This creates a random ID. It isn't linked to your name, email, Google account or advertising ID, and you never type anything to get it. Loading the news sends nothing else about you.</li>
+    <li><strong>News:</strong> the app shows the newest announcement once, as a message, and lists the rest in Community → News. Which items you have seen is kept on your device. A news item may show a picture from a web address we chose, and a link may open a game or a web page in your browser; those web servers receive your IP address and device information, as in any web request.</li>
+    <li><strong>What surveys collect:</strong> your answers, when you sent them, the app version and the app's language, with the anonymous ID, which lets you answer each survey once and change your answer later.</li>
+    <li><strong>When survey data is sent:</strong> your answers are sent only when you tap Send (or, if you are offline, as soon as you are back online).</li>
     <li><strong>Where it is stored:</strong> in Google Cloud Firestore, in the European Union. Only the publisher can read the answers, in the Firebase console; other users can't see them.</li>
     <li><strong>What it is used for:</strong> only to learn, in aggregate, what players want from Playstack. Answers are not used for advertising and not sold or shared.</li>
     <li><strong>How long it is kept:</strong> until the survey's results are no longer needed. Because answers aren't linked to your identity, we usually can't tell which ones are yours; clearing the app's data or reinstalling it gives you a new anonymous ID.</li>
+  </ul>
+
+  <h2>Purchases</h2>
+  <p>Playstack offers optional purchases for real money, made through Google Play: Premium (a one-time purchase that removes ads and makes hints and boosters unlimited) and, in the future, other in-app content such as Medal packs, additional games or other consumable items. Each purchase shows its price before you buy. The <a href="../terms/">terms of use</a> explain how purchases, Medals and refunds work.</p>
+  <ul>
+    <li><strong>What we receive:</strong> which product was bought, the purchase's status and a purchase token from Google Play, so the app can deliver it and restore one-time purchases. We never see your name, Google account, card or other payment details.</li>
+    <li><strong>Where it is kept:</strong> one-time purchases (such as Premium or a purchased game) are linked to your Google account by Google Play and come back when you reinstall the app with the same account. Consumable items and Medals are kept only on your device, as described above.</li>
+    <li><strong>Medals and the Shop:</strong> Medals you earn from achievements and spend in the Shop are game items, not money, and nothing about them is sent to us.</li>
   </ul>
 
   <h2>Data handled by services we use</h2>
@@ -88,13 +103,13 @@
       </tr>
       <tr>
         <td>Firebase Authentication</td>
-        <td>An anonymous sign-in for the surveys, so each person answers a survey once.</td>
+        <td>An anonymous sign-in, made when the app starts, to load the community news and the surveys, so each person answers a survey once.</td>
         <td>A random anonymous user ID, IP address and device information, as in any request.</td>
       </tr>
       <tr>
         <td>Google Cloud Firestore</td>
-        <td>Storing the surveys and your answers to them.</td>
-        <td>Your survey answers, the time they were sent, the app version and language, and the anonymous user ID. Stored in the EU.</td>
+        <td>Storing the news, the surveys and your answers to them.</td>
+        <td>Reading the news uses only the anonymous user ID. For surveys: your answers, the time they were sent, the app version and language, and the anonymous user ID. Stored in the EU.</td>
       </tr>
       <tr>
         <td>Google Play In-App Review</td>
@@ -103,12 +118,12 @@
       </tr>
       <tr>
         <td>Google Play Billing</td>
-        <td>The optional one-time Premium purchase.</td>
-        <td>Google handles the payment. We only receive whether Premium was bought; we never see your payment details.</td>
+        <td>Optional purchases for real money: Premium and, in the future, other in-app content such as Medal packs, games or consumable items.</td>
+        <td>Google handles the payment. We receive the product, the purchase status and a purchase token; we never see your payment details.</td>
       </tr>
       <tr>
         <td>GitHub (GitHub Pages)</td>
-        <td>The banners at the top of each tab and their settings.</td>
+        <td>The banners at the top of each tab and their settings, and this page.</td>
         <td>Your IP address and browser information, as in any web request.</td>
       </tr>
     </table>
@@ -120,12 +135,14 @@
     <li><strong>Consent:</strong> where the law requires it, the app asks before ads or analytics use your data. You can change your answer at any time in <em>Settings → Privacy choices</em>.</li>
     <li><strong>Advertising ID:</strong> you can reset it or opt out of personalised ads in your Android settings (Google → Ads, or Privacy → Ads).</li>
     <li><strong>No ads:</strong> Premium, a one-time purchase, removes all ads.</li>
-    <li><strong>Surveys:</strong> they are optional. If you never open them, no anonymous ID is created and no answers are sent.</li>
+    <li><strong>Purchases:</strong> all purchases are optional; every game can be played without paying.</li>
+    <li><strong>Surveys:</strong> they are optional. If you never send one, no answers are sent.</li>
+    <li><strong>Anonymous ID:</strong> clearing the app's data or reinstalling it gives you a new one; the old one is no longer linked to your device.</li>
     <li><strong>Offline:</strong> every game works without an internet connection; without one, no data is sent.</li>
   </ul>
 
   <h2>Children</h2>
-  <p>Playstack is intended for people aged 13 and older and is not directed at children under 13.</p>
+  <p>Playstack is intended for people aged 13 and older and is not directed at children under 13. Players under 18 should ask a parent or guardian before buying anything.</p>
 
   <h2>How long data is kept</h2>
   <p>Data held by Google and GitHub is kept according to their policies and our settings in their consoles. Analytics and crash data are used only in aggregate, to improve the app.</p>
@@ -134,10 +151,11 @@
   <p>Depending on where you live (for example, under the GDPR), you can ask to access, correct or delete your personal data, object to its use, or withdraw consent. Because we don't keep your data on our own servers, most requests are best handled through the services above, but you can always contact us and we'll help. You can also complain to your data protection authority (in Bulgaria, the <a href="https://www.cpdp.bg/en/">Commission for Personal Data Protection</a>).</p>
 
   <h2>Future features</h2>
-  <p>Online play, rankings and community news are planned. Registering for them will be optional. If they collect new data, this policy will be updated before they launch.</p>
+  <p>Online play and rankings are planned. Registering for them will be optional. If they collect new data, this policy will be updated before they launch.</p>
 
   <h2>Changes</h2>
   <p>We'll post any changes to this policy on this page and update the date above.</p>
+  <p>12 November 2026: added the community news and the anonymous sign-in at app start, achievements, Medals and the Shop, and purchases for real money beyond Premium.</p>
 
   <h2>Contact</h2>
   <p>Valeri Yordanov · <a href="mailto:vlr.dev.studio@gmail.com">vlr.dev.studio@gmail.com</a></p>
